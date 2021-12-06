@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>ITSP Demo</title>
+  <script src="./tf.min.js"></script>
+  <script src="./myutils1.js"></script>
+</head>
+<body>
+<video id="videofeed" width="640" height="480" autoplay></video>
+<canvas id="canvasInput"></canvas><br/>
+<input type="button" id="capbtn" value="Capture" />
+<input type="button" id="startbtn" value="Start" />
+<input type="button" id="stopbtn" value="Stop" /><br/>
+<canvas id="canvasOutput"></canvas><br/>
+<p id="acc"></p>
+<p id="am"></p>
+<table border="1" rows="2" cols="5">
+  <tr>
+    <td><b>anger</b></td>
+    <td><b>fear</b></td>
+    <td><b>happy</b></td>
+    <td><b>sad</b></td>
+    <td><b>neutral</b></td>
+  </tr>
+  <tr>
+    <td id="anger">0</td>
+    <td id="fear">0</td>
+    <td id="happy">0</td>
+    <td id="sad">0</td>
+    <td id="neutral">0</td>
+  </tr>
+</table>
+<script>
+var video = document.getElementById("videofeed");
+
+if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({video: true}).then(function(stream) {
+    video.srcObject = stream;
+  }).catch(function(err) {
+    console.log(err);
+  });
+}
+
+loadOpenCv(function() {
+  let faceCascadeFile = 'haarcascade_frontalface_alt2.xml';
+  createFileFromUrl(faceCascadeFile, faceCascadeFile, async function() {
+
+    setInterval(async function() {
+      res = await fetch(apiurl + '/getall');
+      jsonres = await res.json();
+      console.log(jsonres);
+      document.getElementById('anger').innerText = jsonres['anger'];
+      document.getElementById('fear').innerText = jsonres['fear'];
+      document.getElementById('happy').innerText = jsonres['happy'];
+      document.getElementById('sad').innerText = jsonres['sad'];
+      document.getElementById('neutral').innerText = jsonres['neutral'];
+    }, 3000);
+
+    const model = await tf.loadLayersModel('./tfjsmod/model.json');
+    var iid;
+
+    document.getElementById("capbtn").addEventListener("click", function() {
+      startlogic(model);
+    });
+    document.getElementById("startbtn").addEventListener("click", function() {
+      iid = setInterval(startlogic, 5000, model);
+    });
+    document.getElementById("stopbtn").addEventListener("click", function() {
+      clearInterval(iid);
+    });
+  });
+});
+
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden') {
+    if (prevam !== -1)
+      navigator.sendBeacon(apiurl + '/dec/' + prevam);
+  }
+});
+</script>
+</body>
+</html>
