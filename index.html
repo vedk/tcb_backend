@@ -42,7 +42,7 @@
   </tr>
 </table><br/>
 
-<table border="1" width="100%" rows="4" cols="2">
+<table border="0" width="100%" rows="4" cols="2">
   <tr>
     <td width="50%" align="center">Live webcam feed</td>
     <td width="50%" align="center">Captured image</td>
@@ -96,12 +96,14 @@ loadOpenCv(function() {
       startlogic(model);
     });
     document.getElementById("startbtn").addEventListener("click", function() {
+      stopped = false;
       document.getElementById("loadtext").remove();
       document.getElementById("startbtn").disabled = true;
       document.getElementById("stopbtn").disabled = false;
       iid = setInterval(startlogic, 5000, model);
     });
     document.getElementById("stopbtn").addEventListener("click", function() {
+      stopped = true;
       document.getElementById("startbtn").disabled = false;
       document.getElementById("stopbtn").disabled = true;
       clearInterval(iid);
@@ -112,7 +114,7 @@ loadOpenCv(function() {
 
 document.addEventListener('visibilitychange', function() {
   if (document.visibilityState === 'hidden') {
-    if (prevam !== -1)
+    if (prevam !== -1 && !stopped)
       navigator.sendBeacon(apiurl + '/dec/' + prevam);
   }
 });

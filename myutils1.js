@@ -1,4 +1,5 @@
 const apiurl = 'https://itc.gymkhana.iitb.ac.in/tcb_backend';
+var stopped = true;
 
 function capture() {
 	const cnv = document.getElementById("canvasInput");
