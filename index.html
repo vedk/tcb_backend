@@ -57,7 +57,7 @@ loadOpenCv(function() {
       document.getElementById('neutral').innerText = jsonres['neutral'];
     }, 3000);
 
-    const model = await tf.loadLayersModel('./tfjsmod/model.json');
+    const model = await tf.loadLayersModel('https://distracted-pasteur-a5ca41.netlify.app/tfjsmod/model.json');
     var iid;
 
     document.getElementById("capbtn").addEventListener("click", function() {
