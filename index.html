@@ -8,7 +8,12 @@
   <style>body {font-family: sans-serif;}</body></style>
 </head>
 <body>
-<p><i>Note: No video/photo is ever sent to the server. All computations happen on your device.</i></p>
+<p>
+  <i><b>Note: No video/photo is ever sent to the server. All computations happen on your device.</b></i><br/>
+  ITSP project by Shreya JVS, Shreya Shrivastava, Sneha Kulkarni and Tanvi Joshi under the mentorship of Sharvaree Sinkar.<br/>
+  Converted from the Google Colab project into this format by Ved Khandekar.
+</p>
+<center id="loadtext" style="font-size: 20px;"><b>Please wait while Tensorflow.js and openCV.js loads...</b></center><br/>
 <table align="center" style="font-size: 24px;" width="80%" border="1" rows="5" cols="5">
   <tr><td colspan="3" align="center">Your mood is...</td><td colspan="2" align="center" id="am">-</td></tr>
   <tr><td colspan="3" align="center">...with accuracy of</td><td colspan="2" align="center" id="acc">-</td></tr>
@@ -86,10 +91,12 @@ loadOpenCv(function() {
 
     document.getElementById("startbtn").disabled = false;
     document.getElementById("capbtn").disabled = false;
+    document.getElementById("loadtext").innerHTML = '<b>Please press \"Start\"</b>';
     document.getElementById("capbtn").addEventListener("click", function() {
       startlogic(model);
     });
     document.getElementById("startbtn").addEventListener("click", function() {
+      document.getElementById("loadtext").remove();
       document.getElementById("startbtn").disabled = true;
       document.getElementById("stopbtn").disabled = false;
       iid = setInterval(startlogic, 5000, model);
