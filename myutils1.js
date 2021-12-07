@@ -123,8 +123,8 @@ async function startlogic(mod) {
 		await fetch(apiurl + '/inc/' + am, {method: 'POST'});
 	}
 	if (prevam != am) {
-		await fetch(apiurl + '/dec/' + prevam, {method: 'POST'});
 		await fetch(apiurl + '/inc/' + am, {method: 'POST'});
+		await fetch(apiurl + '/dec/' + prevam, {method: 'POST'});
 	}
 	prevam = am;
 
