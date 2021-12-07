@@ -135,5 +135,6 @@ async function startlogic(mod) {
 }
 
 async function endlogic() {
-	await fetch(apiurl + '/dec/' + prevam, {method: 'POST'});
+	if (prevam !== -1)
+		await fetch(apiurl + '/dec/' + prevam, {method: 'POST'});
 }

@@ -9,9 +9,9 @@
 <body>
 <video id="videofeed" width="640" height="480" autoplay></video>
 <canvas id="canvasInput"></canvas><br/>
-<input type="button" id="capbtn" value="Capture" />
-<input type="button" id="startbtn" value="Start" />
-<input type="button" id="stopbtn" value="Stop" /><br/>
+<input type="button" id="capbtn" value="Capture" disabled />
+<input type="button" id="startbtn" value="Start" disabled />
+<input type="button" id="stopbtn" value="Stop" disabled /><br/>
 <canvas id="canvasOutput"></canvas><br/>
 <p id="acc"></p>
 <p id="am"></p>
@@ -60,14 +60,21 @@ loadOpenCv(function() {
     const model = await tf.loadLayersModel('https://distracted-pasteur-a5ca41.netlify.app/tfjsmod/model.json');
     var iid;
 
+    document.getElementById("startbtn").disabled = false;
+    document.getElementById("capbtn").disabled = false;
     document.getElementById("capbtn").addEventListener("click", function() {
       startlogic(model);
     });
     document.getElementById("startbtn").addEventListener("click", function() {
+      document.getElementById("startbtn").disabled = true;
+      document.getElementById("stopbtn").disabled = false;
       iid = setInterval(startlogic, 5000, model);
     });
     document.getElementById("stopbtn").addEventListener("click", function() {
+      document.getElementById("startbtn").disabled = false;
+      document.getElementById("stopbtn").disabled = true;
       clearInterval(iid);
+      endlogic();
     });
   });
 });
