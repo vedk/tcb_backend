@@ -128,8 +128,8 @@ async function startlogic(mod) {
 	}
 	prevam = am;
 
-	document.getElementById("acc").innerHTML = "acc = " + (acc * 100).toFixed(2);
-	document.getElementById("am").innerHTML = "am = " + emmap[am];
+	document.getElementById("acc").innerHTML = (acc * 100).toFixed(2) + '%';
+	document.getElementById("am").innerHTML = emmap[am];
 
 	input_tensor.dispose();
 	x.dispose();

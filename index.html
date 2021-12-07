@@ -9,8 +9,9 @@
 </head>
 <body>
 <p><i>Note: No video/photo is ever sent to the server. All computations happen on your device.</i></p>
-<table align="center" style="font-size: 24px;" width="80%" border="1" rows="3" cols="5">
-  
+<table align="center" style="font-size: 24px;" width="80%" border="1" rows="5" cols="5">
+  <tr><td colspan="3" align="center">Your mood is...</td><td colspan="2" align="center" id="am">-</td></tr>
+  <tr><td colspan="3" align="center">...with accuracy of</td><td colspan="2" align="center" id="acc">-</td></tr>
   <tr><td align="center" colspan="5">Current mood of the audience</td></tr>
   <tr>
     <td align="center"><b>Anger</b></td>
@@ -42,7 +43,7 @@
     <td width="50%" align="center">Captured image</td>
   </tr>
   <tr>
-    <td align="center"><video id="videofeed" width="640" height="480" autoplay></video></td>
+    <td align="center"><video id="videofeed" width="320" height="240" autoplay></video></td>
     <td align="center"><canvas id="canvasInput"></canvas></td>
   </tr>
   <tr>
