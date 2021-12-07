@@ -6,7 +6,7 @@ function capture() {
 	//cnv.height = video.videoHeight;
 	
 	const ctx = cnv.getContext('2d');
-	ctx.drawImage(video, 0, 0, 320, 240);
+	ctx.drawImage(video, video.videoWidth, video.videoHeight, 320, 240);
 }
 
 function loadOpenCv(onloadCallback) {
