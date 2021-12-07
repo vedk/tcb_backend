@@ -1,4 +1,4 @@
-const apiurl = 'http://127.0.0.1:8080';
+const apiurl = 'https://itc.gymkhana.iitb.ac.in/tcb_backend';
 
 function capture() {
 	const cnv = document.getElementById("canvasInput");
