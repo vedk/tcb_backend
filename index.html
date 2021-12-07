@@ -97,7 +97,8 @@ loadOpenCv(function() {
     });
     document.getElementById("startbtn").addEventListener("click", function() {
       stopped = false;
-      document.getElementById("loadtext").remove();
+      if (prevam === -1)
+        document.getElementById("loadtext").remove();
       document.getElementById("startbtn").disabled = true;
       document.getElementById("stopbtn").disabled = false;
       iid = setInterval(startlogic, 5000, model);
