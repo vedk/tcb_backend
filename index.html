@@ -91,7 +91,7 @@ loadOpenCv(function() {
 
     document.getElementById("startbtn").disabled = false;
     document.getElementById("capbtn").disabled = false;
-    document.getElementById("loadtext").innerHTML = '<b>Please press \"Start\"</b>';
+    document.getElementById("loadtext").innerHTML = '<b>Please press \"Start\" and wait for 5 seconds</b>';
     document.getElementById("capbtn").addEventListener("click", function() {
       startlogic(model);
     });
@@ -117,5 +117,9 @@ document.addEventListener('visibilitychange', function() {
   }
 });
 </script>
+<p>
+  Link to <a href="https://colab.research.google.com/github/sharvaree1921/ITS21013/blob/main/itsp_project_final_code.ipynb">original Google Colab project</a>.<br/>
+  Code for <a href="https://github.com/vedk/tcb_backend">frontend</a> and <a href="https://github.com/vedk/tcb_backend_python">backend</a> of this web app.
+</p>
 </body>
 </html>
