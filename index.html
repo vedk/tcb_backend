@@ -5,32 +5,55 @@
   <title>ITSP Demo</title>
   <script src="./tf.min.js"></script>
   <script src="./myutils1.js"></script>
+  <style>body {font-family: sans-serif;}</body></style>
 </head>
 <body>
-<video id="videofeed" width="640" height="480" autoplay></video>
-<canvas id="canvasInput"></canvas><br/>
-<input type="button" id="capbtn" value="Capture" disabled />
-<input type="button" id="startbtn" value="Start" disabled />
-<input type="button" id="stopbtn" value="Stop" disabled /><br/>
-<canvas id="canvasOutput"></canvas><br/>
-<p id="acc"></p>
-<p id="am"></p>
-<table border="1" rows="2" cols="5">
+<p><i>Note: No video/photo is ever sent to the server. All computations happen on your device.</i></p>
+<table align="center" style="font-size: 24px;" width="80%" border="1" rows="3" cols="5">
+  
+  <tr><td align="center" colspan="5">Current mood of the audience</td></tr>
   <tr>
-    <td><b>anger</b></td>
-    <td><b>fear</b></td>
-    <td><b>happy</b></td>
-    <td><b>sad</b></td>
-    <td><b>neutral</b></td>
+    <td align="center"><b>Anger</b></td>
+    <td align="center"><b>Fear</b></td>
+    <td align="center"><b>Happy</b></td>
+    <td align="center"><b>Sad</b></td>
+    <td align="center"><b>Neutral</b></td>
   </tr>
   <tr>
-    <td id="anger">0</td>
-    <td id="fear">0</td>
-    <td id="happy">0</td>
-    <td id="sad">0</td>
-    <td id="neutral">0</td>
+    <td align="center" id="anger">0</td>
+    <td align="center" id="fear">0</td>
+    <td align="center" id="happy">0</td>
+    <td align="center" id="sad">0</td>
+    <td align="center" id="neutral">0</td>
+  </tr>
+</table><br/>
+
+<table width="30%" align="center" rows="1" cols="3">
+  <tr>
+    <td width="20%" align="center"><input type="button" id="capbtn" value="Capture" disabled /></td>
+    <td width="20%" align="center"><input type="button" id="startbtn" value="Start" disabled /></td>
+    <td width="20%" align="center"><input type="button" id="stopbtn" value="Stop" disabled /></td>
+  </tr>
+</table><br/>
+
+<table border="1" width="100%" rows="4" cols="2">
+  <tr>
+    <td width="50%" align="center">Live webcam feed</td>
+    <td width="50%" align="center">Captured image</td>
+  </tr>
+  <tr>
+    <td align="center"><video id="videofeed" width="640" height="480" autoplay></video></td>
+    <td align="center"><canvas id="canvasInput"></canvas></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">Input given to model:</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><canvas id="canvasOutput"></canvas></td>
   </tr>
 </table>
+<p id="acc"></p>
+<p id="am"></p>
 <script>
 var video = document.getElementById("videofeed");
 
