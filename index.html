@@ -79,11 +79,11 @@ loadOpenCv(function() {
       res = await fetch(apiurl + '/getall');
       jsonres = await res.json();
       console.log(jsonres);
-      document.getElementById('anger').innerText = jsonres['anger'];
-      document.getElementById('fear').innerText = jsonres['fear'];
-      document.getElementById('happy').innerText = jsonres['happy'];
-      document.getElementById('sad').innerText = jsonres['sad'];
-      document.getElementById('neutral').innerText = jsonres['neutral'];
+      document.getElementById('anger').innerText = jsonres['anger'] < 0 ? '0' : jsonres['anger'];
+      document.getElementById('fear').innerText = jsonres['fear'] < 0 ? '0' : jsonres['fear'];
+      document.getElementById('happy').innerText = jsonres['happy'] < 0 ? '0' : jsonres['happy'];
+      document.getElementById('sad').innerText = jsonres['sad'] < 0 ? '0' : jsonres['sad'];
+      document.getElementById('neutral').innerText = jsonres['neutral'] < 0 ? '0' : jsonres['neutral'];
     }, 3000);
 
     const model = await tf.loadLayersModel('https://distracted-pasteur-a5ca41.netlify.app/tfjsmod/model.json');
