@@ -2,8 +2,8 @@ const apiurl = 'https://itc.gymkhana.iitb.ac.in/tcb_backend';
 
 function capture() {
 	const cnv = document.getElementById("canvasInput");
-	cnv.width = video.videoWidth;
-	cnv.height = video.videoHeight;
+	//cnv.width = video.videoWidth;
+	//cnv.height = video.videoHeight;
 	
 	const ctx = cnv.getContext('2d');
 	ctx.drawImage(video, 0, 0, 320, 240);
