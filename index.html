@@ -89,11 +89,11 @@ loadOpenCv(function() {
     var iid;
 
     document.getElementById("startbtn").disabled = false;
-    document.getElementById("capbtn").disabled = false;
+    //document.getElementById("capbtn").disabled = false;
     document.getElementById("loadtext").innerHTML = '<b>Please press \"Start\" and wait for 5 seconds</b>';
-    document.getElementById("capbtn").addEventListener("click", function() {
+    /*document.getElementById("capbtn").addEventListener("click", function() {
       startlogic(model);
-    });
+    });*/
     document.getElementById("startbtn").addEventListener("click", function() {
       stopped = false;
       if (prevam === -1)
